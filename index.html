@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Job Notifier</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <div class="mark">JN</div>
+    <div>
+      <h1>Job Notifier</h1>
+      <p class="sub">Watches Adzuna, Reed &amp; Jooble. Tells you the moment something fits.</p>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Set your watch</h2>
+      <form id="subscribe-form">
+        <label>
+          Email
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+
+        <label>
+          Keywords <span class="hint">comma separated</span>
+          <input type="text" name="keywords" placeholder="react, backend, product manager" />
+        </label>
+
+        <label>
+          Location
+          <input type="text" name="location" placeholder="London, Remote, Bengaluru…" />
+        </label>
+
+        <label>
+          Minimum salary <span class="hint">optional</span>
+          <input type="number" name="minSalary" placeholder="60000" />
+        </label>
+
+        <fieldset class="channels">
+          <legend>Notify me by</legend>
+
+          <label class="check">
+            <input type="checkbox" name="channelEmail" checked />
+            Email
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="channelSms" />
+            SMS
+          </label>
+          <input type="tel" name="phone" placeholder="+1 555 000 1111" class="conditional" data-for="channelSms" />
+
+          <label class="check">
+            <input type="checkbox" name="channelPush" />
+            Push
+          </label>
+          <input type="text" name="ntfyTopic" placeholder="pick a private topic name, e.g. jn-amrita-92" class="conditional" data-for="channelPush" />
+        </fieldset>
+
+        <button type="submit">Save preferences</button>
+        <p class="form-status" id="form-status"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Latest matches</h2>
+        <button id="check-now" class="ghost">Check now</button>
+      </div>
+      <p class="hint" id="jobs-meta">No check run yet.</p>
+      <ul id="jobs-list" class="jobs"></ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Runs a scheduled check automatically. "Check now" triggers an immediate cycle for every saved watch.
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
