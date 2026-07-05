@@ -18,7 +18,13 @@ async function fetchReedJobs({ keywords, location }) {
 
   try {
     const { data } = await axios.get(url, {
+      timeout: 10000,
       auth: { username: apiKey, password: '' },
+      headers: {
+        // Some APIs (Reed included) reject requests that look bot-like;
+        // an explicit browser-style User-Agent avoids that.
+        'User-Agent': 'Mozilla/5.0 (compatible; JobNotifier/1.0)',
+      },
       params: {
         keywords: keywords || undefined,
         locationName: location || undefined,
@@ -28,7 +34,18 @@ async function fetchReedJobs({ keywords, location }) {
 
     return (data.results || []).map(normalize);
   } catch (err) {
-    console.error('[reed] fetch failed:', err.response?.status, err.message);
+    const status = err.response?.status;
+    const body = err.response?.data;
+    if (status === 403) {
+      console.error(
+        '[reed] fetch failed: 403 Forbidden — usually means REED_API_KEY is missing, ' +
+          'invalid, or not set in your hosting platform\'s environment variables ' +
+          '(a local .env file is not enough once deployed). Response body:',
+        body
+      );
+    } else {
+      console.error('[reed] fetch failed:', status, err.message, body || '');
+    }
     return [];
   }
 }
