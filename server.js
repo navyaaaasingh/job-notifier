@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cron = require('node-cron');
 const apiRoutes = require('./routes/api');
+const broadcastRoutes = require('./routes/broadcast');
 const { runPipeline } = require('./services/pipeline');
 
 const app = express();
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use('/api', apiRoutes);
+app.use('/api/broadcast', broadcastRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, () => {
