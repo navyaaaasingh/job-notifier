@@ -10,6 +10,7 @@ const db = low(adapter);
 // subscribers: [{ id, email, phone, ntfyTopic, keywords: [], location, minSalary,
 //                  channels: { email: bool, sms: bool, push: bool }, createdAt }]
 // seenJobIds: [ "adzuna:123", "reed:456", ... ]  -- dedupe across polls
-db.defaults({ subscribers: [], seenJobIds: [] }).write();
+// recipients: [{ email, addedAt }]  -- fixed broadcast list (manual curation workflow)
+db.defaults({ subscribers: [], seenJobIds: [], recipients: [] }).write();
 
 module.exports = db;
