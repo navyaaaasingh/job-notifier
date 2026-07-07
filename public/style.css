@@ -265,3 +265,132 @@ button.ghost {
   font-size: 12.5px;
   text-align: center;
 }
+
+/* ---- Broadcast page additions ---- */
+
+.steps {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.step {
+  font-family: ui-monospace, monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.step.active { border-color: var(--signal); color: var(--signal); }
+
+.grid.single {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.inline-form {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  align-items: stretch;
+}
+.inline-form input { flex: 1; }
+.inline-form button { flex-shrink: 0; }
+
+.job-select {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  text-transform: none;
+  font-family: -apple-system, sans-serif;
+  cursor: pointer;
+}
+.job-select input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.recipient-add {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.recipient-add input { flex: 1; }
+
+.recipient-bulk textarea {
+  width: 100%;
+  font-family: -apple-system, sans-serif;
+  font-size: 13.5px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+}
+.bulk-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0 16px;
+}
+.file-btn {
+  font-family: ui-monospace, monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px dashed var(--line);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.file-btn:hover { border-color: var(--signal); color: var(--signal); }
+
+.recipients {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.recipient {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-size: 13.5px;
+}
+.remove-recipient {
+  background: none;
+  border: none;
+  color: var(--signal);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+textarea[name="message"] {
+  width: 100%;
+  font-family: -apple-system, sans-serif;
+  font-size: 14.5px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+}
